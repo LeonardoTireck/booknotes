@@ -1,0 +1,59 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="mainContainer">
+  <form class="book-search" action="/search" method="post">
+    <h3>Search for a book and write a review!</h3> <br>
+    <span><input type="text" name="search" id="searchInput" autocomplete="off" placeholder="Enter book name, author or isbn"/>
+    <button id="searchButton" type="submit">Go</button></span>
+  </form>
+</div>
+
+<div class="mainContainer">
+  <h1 id="mainTitle">My Reviews</h1>
+  <div class="sort">
+    <label for="sort-select">
+      Sort By:
+    </label>
+    <form action="/sort" method="post">
+      <select onchange="this.form.submit()" name="sort" id="sort-select">
+        <option value="">Select</option>
+        <option value="title">Title</option>
+        <option value="rating">Rating</option>
+        <option value="date">Date</option>
+      </select>
+    </form>
+  </div>
+  
+  <% books.forEach(book => { %>
+  <div class="reviewContainer">
+    <img id="frontImg"
+      src="https://covers.openlibrary.org/b/id/<%=book.cover_id%>.jpg"
+      alt="Book Cover"
+    />
+    <div class="title-author">
+      <h3><%= book.title %></h3>
+      <h5>By: <%= book.author %></h5>
+    </div>
+    
+    <p id="review-id">Review: <%= book.review %></p>
+
+    <div class="rating-date">
+      <p>Posted on: <%=book.date %></p>
+      <strong><p>Rating: <%=book.rating %>/10</p></strong>
+    </div>
+    
+    <div class="review-buttons">
+      <form action="/edit" method="post">
+        <input type="hidden" value="<%=book.id%>" name="id">
+        <input class="editButton" type="submit" value="Edit" />
+      </form>
+      <form action="/delete" method="post">
+        <input type="hidden" value="<%=book.id%>" name="id">
+        <input class="deleteButton" type="submit" value="Delete" />
+      </form>
+    </div>
+  </div>
+  <% }) %>
+</div>
+
+<%- include('./partials/footer.ejs') %>

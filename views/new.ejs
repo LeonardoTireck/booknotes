@@ -1,0 +1,49 @@
+<%- include('./partials/header.ejs') %>
+
+<div class="container">
+  <div class="newBook">
+    <img
+      id="newImg"
+      src="https://covers.openlibrary.org/b/id/<%=cover_id%>.jpg"
+      alt="<%=title%> Book Cover"
+    />
+
+    <div class="title-author center">
+      <h2><%=title%></h2>
+      <h3>By: <%=author%></h3>
+    </div>
+      
+    <div class="newReviewInputs">
+      <form action="/add" method="post">
+      <% if (locals.review) { %>
+        <textarea
+        name="review"
+        id="reviewArea"
+        
+        placeholder="Write Your Review Here"
+        required
+      ><%=review%></textarea>
+      <% } else {%>
+      <textarea
+        name="review"
+        id="reviewArea"
+        
+        placeholder="Write Your Review Here"
+        required
+      ></textarea><br>
+      <% } %>
+      <% if(locals.rating){ %>
+        <input type="text" name="rating" id="ratingSelector" placeholder="Score From 1 to 10" value="<%=rating%>" required autocomplete="off"/>
+      <% } else { %>
+        <input type="text" name="rating" id="ratingSelector" placeholder="Score From 1 to 10" required autocomplete="off"/>
+        <% } %>
+        <input id="addNewBtn" type="submit" value="Add Review"/>
+    </form>
+    </div>
+    
+    
+    
+  </div>
+</div>
+
+<%- include('./partials/footer.ejs') %>

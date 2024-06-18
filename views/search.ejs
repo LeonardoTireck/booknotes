@@ -1,0 +1,29 @@
+<%- include('./partials/header.ejs') %>
+<div class="mainContainer">
+  <h2 id="search-title">Choose a book from the list:</h2>
+    <div class="results">
+        <% if (locals.data){ %>
+            <% for(i=0; i<data.length; i++) { %>
+                <div class="result">
+                    <form action="/new" method="post" id="resultForm">
+                        <button class="resultBtn" type="submit">
+                        <img class="result-img"
+                        src="https://covers.openlibrary.org/b/id/<%=data[i].cover_i%>.jpg"
+                        alt="Book Cover"
+                        />
+                        <h3 id="book-title"><%=data[i].title%></h3>
+                        <h4 id="book-author">By: <%=data[i].author_name%></h4>
+                        <h5 id="book-publish-year">First Publish Year: <%=data[i].first_publish_year%></h5>
+
+                        <input type="hidden" name="title" value="<%=data[i].title%>">
+                        <input type="hidden" name="author" value="<%=data[i].author_name%>">
+                        <input type="hidden" name="cover_id" value="<%=data[i].cover_i%>">
+                        </button>
+                    </form>
+                </div>
+        <% }} %>
+    </div>  
+</div>
+
+
+<%- include('./partials/footer.ejs') %>
