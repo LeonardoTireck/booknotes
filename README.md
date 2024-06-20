@@ -1,5 +1,6 @@
 English version at the end of the page.
 
+![Front Page](public/photos/booknotes-frontpage.jpg)
   
 # Leo's Book Notes  
 
