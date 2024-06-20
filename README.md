@@ -1,6 +1,8 @@
 English version at the end of the page.
 
 ![Front Page](public/photos/booknotes-frontpage.jpg)
+![Search Page](public/photos/booknotes-searchpage.jpg)
+![Add Form](public/photos/booknotes-addform.jpg)
   
 # Leo's Book Notes  
 
